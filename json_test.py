@@ -15,5 +15,3 @@ parsed = response.json()
 #pp = pprint.PrettyPrinter(indent=4, width=20, compact=False)
 #pp.pprint(parsed)
 print(json.dumps(parsed, indent=4, sort_keys=True))
-
-#print(response.headers)
