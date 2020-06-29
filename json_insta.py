@@ -2,17 +2,17 @@ import requests
 import json
 import pprint
 
-response = requests.get('https://www.instagram.com/explore/tags/pizza/?__a=1')
+response = requests.get('https://api.edamam.com/search?q=chicken biryani&app_id=f53fff68&app_key=1e26dbff572a1cdac4c4f3f31257b8dd&from=0&to=5')
 
 def eachRecursive(obj):
 	if isinstance(obj,dict):
 		for k, v in obj.items():
-			if k == "display_url":
-				print(v)
-			elif k == "dimensions":
-				print(v)
-			elif k == "taken_at_timestamp":
-				print(v)
+			if k == "totalNutrients":
+				print("Nutrients :", v)
+			elif k == "ingredients":
+				print("Ingredients :",v)
+			#elif k == "label":
+			#	print(v)
 			else:
 				eachRecursive(v)
 	elif isinstance(obj,list):
@@ -27,6 +27,7 @@ elif response.status_code == 400:
 response.encoding = 'utf-8'
 parsed = response.json()
 
+print("chicken biryani")
 eachRecursive(parsed)
 
 #pp = pprint.PrettyPrinter(indent=4, width=20, compact=False)
