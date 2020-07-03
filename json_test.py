@@ -1,14 +1,14 @@
 import requests
 import json
-import pprint
 
 with open('recipe.json') as f:
-  recipe = json.load(f)
+  recipe = f.read()
+
 
 response = requests.post("https://api.edamam.com/api/nutrition-details?app_id=9aac9873&app_key=e373a02590c47a6e8e3859f57f9551c6"
 			,data = recipe
 			,headers={
-			"Content-Type: application/json"
+			"Content-Type": "application/json"
 			})
 
 if response.status_code == 200:
